@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Cumpleaños Mamá!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#1a000d 0%,#33001a 50%,#4d0026 100%);
+color:#fff;
+min-height:100vh;
+overflow-x:hidden;
+position:relative;
+}
+
+/* Estrellas */
+.stars-container{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+z-index:1;
+}
+
+.star{
+position:absolute;
+border-radius:50%;
+animation:fall linear infinite;
+}
+
+@keyframes fall{
+to{
+transform:translateY(100vh) rotate(360deg);
+}
+}
+
+.container{
+max-width:1000px;
+margin:auto;
+padding:20px;
+position:relative;
+z-index:10;
+text-align:center;
+}
+
+.title-text{
+    font-size:4rem;
+    font-family:'Dancing Script',cursive;
+    margin:30px 0;
+    background:linear-gradient(to right,#ff6699,#ff0033,#ff3366);
+    background-clip:text;              /* estándar */
+    -webkit-background-clip:text;      /* Chrome/Safari */
+    color:transparent;  
+    text-shadow:0 0 20px #ff0066;
+}
+
+.subtitle{
+font-size:1.5rem;
+color:#ffb3c8;
+margin-bottom:30px;
+}
+
+.birthday-card{
+background:rgba(255,0,102,0.15);
+border-radius:25px;
+padding:40px;
+border:3px solid #ff6699;
+box-shadow:0 0 40px rgba(255,0,102,0.4);
+backdrop-filter:blur(10px);
+margin-bottom:40px;
+}
+
+.birthday-card p{
+font-size:1.3rem;
+line-height:1.8;
+color:#ffcccc;
+margin-bottom:20px;
+}
+
+.special-button{
+background:linear-gradient(45deg,#ff0066,#ff3366,#ff6699);
+border:none;
+padding:20px 50px;
+font-size:1.5rem;
+border-radius:50px;
+cursor:pointer;
+color:white;
+font-weight:bold;
+box-shadow:0 0 25px rgba(255,0,102,0.7);
+transition:.3s;
+}
+
+.special-button:hover{
+transform:scale(1.08);
+box-shadow:0 0 40px rgba(255,0,102,0.9);
+}
+
+.hidden-message{
+display:none;
+margin-top:40px;
+animation:fadeIn 1s ease;
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+/* FLOR */
+.flower-container{
+margin-top:40px;
+animation:bloom 2s ease forwards;
+opacity:0;
+}
+
+@keyframes bloom{
+to{opacity:1;}
+}
+
+.flower{
+font-size:6rem;
+animation:floatFlower 3s ease-in-out infinite;
+}
+
+@keyframes floatFlower{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-15px);}
+}
+
+.flower-text{
+font-family:'Dancing Script',cursive;
+font-size:2rem;
+color:#ffb3c8;
+margin-top:15px;
+}
+
+footer{
+margin-top:50px;
+color:#ff99bb;
+padding:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars-container" id="starsContainer"></div>
+
+<div class="container">
+
+<h1 class="title-text">¡Feliz Cumpleaños Mamá!</h1>
+<p class="subtitle">Para la mujer más importante de mi vida</p>
+
+<section class="birthday-card">
+<p>
+Mamá, gracias por tu amor infinito, por cada consejo,
+por cada sacrificio y por estar siempre para mí.
+</p>
+<p>
+Eres mi ejemplo, mi fuerza y mi mayor bendición.
+Hoy celebramos tu vida y todo lo hermosa que eres.
+</p>
+</section>
+
+<button class="special-button" id="specialButton">
+Haz clic para leer mi promesa ❤️
+</button>
+
+<div class="hidden-message" id="hiddenMessage">
+
+<p style="margin-top:30px;font-size:1.4rem;color:#ffcccc;">
+Mamá, prometo seguir aprendiendo cada día,
+esforzarme más y convertirme en alguien
+de quien te sientas orgullosa.
+</p>
+
+<p style="font-size:1.4rem;color:#ffcccc;">
+Este regalo es pequeño, pero mi amor es inmenso.
+Y te prometo que en el futuro
+te haré un regalo mucho mejor,
+porque tú mereces lo mejor del mundo.
+</p>
+
+<p style="font-family:'Dancing Script',cursive;font-size:2rem;margin-top:20px;">
+Con todo mi amor, tu hijo Diogo ❤️
+</p>
+
+<!-- Flor animada -->
+<div class="flower-container" id="flowerContainer">
+<div class="flower">🌸</div>
+<div class="flower-text">Esta flor es para ti, mamá</div>
+</div>
+
+</div>
+
+<footer>
+Hecho con amor por tu hijo ❤️
+</footer>
+
+</div>
+
+<script>
+// Estrellas
+function createStars(){
+const container=document.getElementById('starsContainer');
+for(let i=0;i<80;i++){
+const star=document.createElement('div');
+star.classList.add('star');
+const size=Math.random()*4+2;
+star.style.width=size+'px';
+star.style.height=size+'px';
+star.style.left=Math.random()*100+'vw';
+star.style.top=-Math.random()*100+'px';
+star.style.backgroundColor='#ff6699';
+star.style.animationDuration=(Math.random()*5+3)+'s';
+container.appendChild(star);
+}
+}
+window.addEventListener('load',createStars);
+
+// Mostrar mensaje
+document.getElementById('specialButton').addEventListener('click',function(){
+const msg=document.getElementById('hiddenMessage');
+const flower=document.getElementById('flowerContainer');
+
+if(msg.style.display==='block'){
+msg.style.display='none';
+flower.style.opacity='0';
+}else{
+msg.style.display='block';
+setTimeout(()=>{flower.style.opacity='1';},500);
+}
+});
+</script>
+
+</body>
+</html>
